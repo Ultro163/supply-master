@@ -1,0 +1,15 @@
+scalar UUID
+@specifiedBy(url:
+"https://tools.ietf.org/html/rfc4122"
+)
+
+type Query {
+    getShipmentItemsReports(shipmentId: UUID): [ShipmentItemReportGraphDto]
+}
+
+type ShipmentItemReportGraphDto {
+    productId: UUID
+    weightKg: Float
+    pricePerKg: Float
+    totalPrice: Float
+}

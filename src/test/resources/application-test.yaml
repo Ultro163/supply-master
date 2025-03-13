@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:16.1:///testdb
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    username: testuser
+    password: testpass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: false

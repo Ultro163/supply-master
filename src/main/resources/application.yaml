@@ -1,0 +1,47 @@
+spring:
+  config:
+    import: "optional:file:.env[.properties]"
+  application:
+    name: supply-master
+  profiles:
+    active: default
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    url: jdbc:postgresql://localhost:5433/supply-db
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc.time_zone: UTC
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  graphql:
+    path: /graphql
+    graphiql:
+      enabled: true
+
+logging:
+  level:
+    com.example: info
+    org.hibernate.SQL: error
+    org:
+      springframework:
+        orm.jpa: error
+        transaction: error
+        transaction.interceptor: error
+        orm.jpa.JpaTransactionManager: error
+        web: info
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
